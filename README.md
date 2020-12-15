@@ -73,6 +73,15 @@ There is a special query type called `__stack_trace` that gives you the current 
 Useful if a workflow is stuck for a long time and you want to check where it stopped.
 
 
+## Cleaning up
+
+Once you are finished with the workshop, you can clean up all resources (containers) by running the following command:
+
+```bash
+make down
+```
+
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
