@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+    mysql:
+        image: mysql:5.7
+        command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+
+    cadence:
+        image: ubercadence/server:0.15.1-auto-setup
+        environment:
+            LOG_LEVEL: debug,info
+            DB: mysql
+            MYSQL_SEEDS: mysql
+            MYSQL_USER: root
+            MYSQL_PWD: root
+        depends_on:
+            - mysql
+
+    cadence-web:
+        image: ubercadence/web:3.19.1-slim
+        environment:
+            CADENCE_TCHANNEL_PEERS: cadence:7933
+        depends_on:
+            - cadence

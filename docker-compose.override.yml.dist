@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    mysql:
+        # needed for Linux users
+        # user: "${uid}:${gid}"
+        ports:
+            - 127.0.0.1:3306:3306
+        volumes:
+            - ./var/docker/volumes/mysql:/var/lib/mysql
+
+    cadence:
+        ports:
+            - 127.0.0.1:7933:7933
+            - 127.0.0.1:7934:7934
+            - 127.0.0.1:7935:7935
+
+    cadence-web:
+        ports:
+            - 127.0.0.1:8088:8088
